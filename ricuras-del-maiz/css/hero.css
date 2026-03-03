@@ -1,0 +1,204 @@
+/* ============================================================
+   hero.css - Seccion Principal (Portada)
+   Ricuras del Maiz
+   ============================================================ */
+
+/* Contenedor principal */
+#hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Fondo degradado azul cielo */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    155deg,
+    #1A8EA0 0%,
+    #2AAFBE 40%,
+    #50C8D8 70%,
+    #A0E4EE 100%
+  );
+}
+
+/* Circulos decorativos de fondo */
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-circle-1 {
+  top: -8%;
+  right: -6%;
+  width: 480px;
+  height: 480px;
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+
+.hero-circle-2 {
+  bottom: -12%;
+  left: -8%;
+  width: 360px;
+  height: 360px;
+  background: rgba(212, 160, 48, .1);
+}
+
+/* Ola decorativa en la parte inferior */
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Contenido centrado del hero */
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  padding: 0 1.5rem;
+  animation: fadeUp .9s ease both;
+}
+
+/* ── Logo grande en el hero ── */
+.hero-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.hero-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, .65);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .18);
+  background: linear-gradient(135deg, #4BBFCB, #D4A030);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+/* Input de archivo oculto sobre el logo */
+.hero-logo input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* Imagen subida del logo */
+.hero-logo img.uploaded {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Placeholder antes de subir el logo */
+.hero-logo-ph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .25rem;
+}
+
+.hero-logo-ph span {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.hero-logo-ph p {
+  font-size: .52rem;
+  color: rgba(255, 255, 255, .8);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ── Titulo principal ── */
+#hero h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.8rem, 8vw, 6.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.05;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, .14);
+}
+
+#hero h1 span {
+  color: var(--gold-light);
+}
+
+/* Slogan debajo del titulo */
+.hero-slogan {
+  margin-top: .9rem;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: rgba(255, 255, 255, .92);
+  letter-spacing: .1em;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Botones de accion */
+.hero-cta {
+  display: inline-flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Indicador de scroll ── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  opacity: .7;
+}
+
+.scroll-indicator span {
+  font-size: .6rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, #fff, transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .hero-logo { width: 90px; height: 90px; }
+  .hero-logo-ph span { font-size: 1.7rem; }
+}

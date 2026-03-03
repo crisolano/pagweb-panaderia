@@ -1,0 +1,106 @@
+/* ============================================================
+   about.css - Seccion Quienes Somos
+   Ricuras del Maiz
+   ============================================================ */
+
+/* Contenedor de la seccion */
+#about {
+  padding: 7rem 4rem;
+  background: var(--section-alt);
+}
+
+/* Layout de dos columnas: imagen | texto */
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* ── Columna izquierda: imagen ── */
+.about-img-wrap {
+  position: relative;
+}
+
+/* Bordes decorativos detras de la imagen */
+.about-deco {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.about-deco-1 {
+  top: -1.2rem;
+  left: -1.2rem;
+  border: 2px solid rgba(58, 175, 190, .2);
+}
+
+.about-deco-2 {
+  bottom: -1.2rem;
+  right: -1.2rem;
+  border: 2px solid rgba(212, 160, 48, .2);
+}
+
+/* ── Columna derecha: texto ── */
+.about-text {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Parrafos de descripcion */
+.about-body {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-mid);
+  margin: 1.1rem 0;
+}
+
+/* ── Estadisticas (15 anos, 30 variedades, 100%) ── */
+.about-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Numero grande */
+.stat-num {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--sky);
+  line-height: 1;
+}
+
+/* Texto debajo del numero */
+.stat-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  opacity: .6;
+  margin-top: .3rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  #about { padding: 5rem 1.5rem; }
+
+  /* Una sola columna en mobile */
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-stats { gap: 1.5rem; }
+}

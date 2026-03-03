@@ -1,0 +1,174 @@
+/* ============================================================
+   navbar.css - Barra de Navegacion
+   Ricuras del Maiz
+   ============================================================ */
+
+/* Contenedor principal del nav */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3.5rem;
+  background: rgba(255, 253, 245, .97);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(58, 175, 190, .15);
+  box-shadow: 0 2px 16px rgba(58, 175, 190, .1);
+  transition: padding .3s;
+}
+
+/* Nav compacto al hacer scroll */
+nav.scrolled {
+  padding: .6rem 3.5rem;
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(58, 175, 190, .4);
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #4BBFCB, #D4A030);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+/* Input de archivo oculto sobre el logo */
+.logo-img input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* Imagen subida del logo */
+.logo-img img.uploaded {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Texto al lado del logo */
+.logo-txt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--sky);
+}
+
+.logo-tag {
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── Links de navegacion ── */
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  position: relative;
+  transition: color .3s;
+}
+
+/* Subrayado animado al hacer hover */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--sky);
+  border-radius: 2px;
+  transition: width .3s;
+}
+
+.nav-links a:hover { color: var(--sky); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ── Hamburger (solo mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--sky);
+  border-radius: 2px;
+  transition: .3s;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  nav.scrolled { padding: .6rem 1.5rem; }
+
+  /* Menu oculto por defecto en mobile */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #fff;
+    padding: 6rem 2.5rem 2rem;
+    gap: 2rem;
+    transition: right .35s;
+    z-index: 150;
+    box-shadow: -4px 0 30px rgba(0, 0, 0, .1);
+  }
+
+  /* Menu abierto */
+  .nav-links.open {
+    display: flex;
+    right: 0;
+  }
+
+  .hamburger { display: flex; }
+}

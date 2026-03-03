@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Ricuras del Maiz - Panaderia Artesanal</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS por secciones -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav id="navbar">
+    <a class="logo" href="#">
+      <div class="logo-img" id="nLogo">
+        <img src="img/logo.png" alt="Logo Ricuras del Maiz" class="uploaded">
+      </div>
+      <div class="logo-txt">
+        <span class="logo-name">Ricuras del Maiz</span>
+        <span class="logo-tag">Naturalmente Delicioso</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#products">Productos</a></li>
+      <li><a href="#gallery">Galeria</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-circle hero-circle-1"></div>
+    <div class="hero-circle hero-circle-2"></div>
+    <svg class="hero-wave" viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#FFFDF5"/>
+    </svg>
+
+    <!-- FIX 1: todo el contenido dentro de hero-content -->
+    <div class="hero-content">
+      <div class="hero-logo-wrap">
+        <div class="hero-logo" id="hLogo">
+          <img src="img/logo.png" alt="Logo Ricuras del Maiz" class="uploaded">
+        </div>
+      </div>
+      <h1>Ricuras del <span>Maiz</span></h1>
+      <p class="hero-slogan">&#10022; Naturalmente Delicioso &#10022;</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn-primary">Ver productos</a>
+        <a href="#about"    class="btn-outline">Nuestra historia</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-img-wrap reveal">
+        <div class="about-deco about-deco-1"></div>
+        <div class="about-deco about-deco-2"></div>
+        <div class="img-placeholder" id="aboutImg">
+          <input type="file" accept="image/*" onchange="loadImage(this, 'aboutImg')">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#3AAFBE" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <p>Haz clic para subir una imagen</p>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <span class="lbl">&#10022; Quienes somos</span>
+        <h2 class="section-title">Tradicion que se<br>siente en cada <em>bocado</em></h2>
+        <p class="about-body">Somos una panaderia familiar con anos de experiencia elaborando productos artesanales con maiz y harinas seleccionadas. Cada pieza es preparada con amor, respetando las recetas tradicionales.</p>
+        <p class="about-body">Cada manana, nuestros panaderos hornean con ingredientes frescos y naturales, sin aditivos artificiales, para que cada mordisco sea una experiencia autentica.</p>
+        <div class="about-stats">
+          <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Anos de oficio</div></div>
+          <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Variedades</div></div>
+          <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Artesanal</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRODUCTS ===================== -->
+  <section id="products">
+    <div class="products-header reveal">
+      <span class="lbl">&#10022; Nuestros productos</span>
+      <h2 class="section-title">Recien salidos<br>del <em>horno</em></h2>
+      <div class="divider"><span>&#127807;</span></div>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section id="gallery">
+    <div class="gallery-header reveal">
+      <span class="lbl">&#10022; Galeria</span>
+      <h2 class="section-title">Momentos del <em>obrador</em></h2>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="contact-inner">
+      <span class="lbl">&#10022; Visitanos</span>
+      <h2 class="section-title reveal">Siempre hay algo rico<br><em>esperandote</em></h2>
+      <p class="contact-body reveal">Ven a visitarnos y descubre el sabor que nos distingue. Pedidos especiales para eventos, cumpleanos y celebraciones.</p>
+      <div class="contact-info reveal">
+        <div class="info-card"><span class="info-icon">&#128205;</span><span class="info-label">Direccion</span><span class="info-value">Calle 3ra #12-07 Parque de Villanueva</span></div>
+        <div class="info-card"><span class="info-icon">&#128336;</span><span class="info-label">Horario</span><span class="info-value">Lun-Dom 6:00AM-9:00PM</span></div>
+        <div class="info-card"><span class="info-icon">&#128222;</span><span class="info-label">Telefono</span><span class="info-value">313 344 7620 - 320 813 3071</span></div>
+      </div>
+      <a href="tel:+573001234567" class="btn-primary">Hacer un pedido</a>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <!-- FIX 2: div.footer-logo envuelve imagen + texto -->
+    <div class="footer-logo">
+      <div class="footer-logo-img" id="fLogo">
+        <img src="img/logo.png" alt="Logo Ricuras del Maiz" class="uploaded">
+      </div>
+      <div class="footer-logo-txt">
+        <div class="footer-name">Ricuras del Maiz</div>
+        <div class="footer-tag">Naturalmente Delicioso</div>
+      </div>
+    </div>
+    <p class="footer-copy">2025 Ricuras del Maiz. Todos los derechos reservados</p>
+    <div class="footer-social">
+      <a href="#" class="social-link">ig</a>
+      <a href="#" class="social-link">fb</a>
+      <a href="#" class="social-link">wa</a>
+    </div>
+  </footer>
+
+  <!-- ===================== CARRITO ===================== -->
+  <div class="cart-fab" onclick="toggleCart()">
+    &#128722;<span class="cart-count" id="cartCount">0</span>
+  </div>
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-modal" id="cartModal">
+    <button class="cart-close" onclick="toggleCart()">&#x2715;</button>
+    <h2>Tu pedido &#128722;</h2>
+    <div id="cartItems">
+      <div class="cart-empty">Tu carrito esta vacio. Agrega algo delicioso!</div>
+    </div>
+    <div class="cart-total" id="cartTotal" style="display:none">
+      <span class="cart-total-label">Total</span>
+      <!-- FIX 3: valor correcto en vez de /bin/sh -->
+      <span class="cart-total-value" id="cartTotalValue">$0</span>
+    </div>
+    <div id="checkoutWrap" style="margin-top:1.5rem;display:none">
+      <button class="btn-primary" style="width:100%;text-align:center;border-radius:50px" onclick="confirmOrder()">
+        Confirmar pedido &#8594;
+      </button>
+    </div>
+  </div>
+  <div class="toast" id="toast">Agregado al carrito! &#127807;</div>
+
+  <!-- JS por modulos -->
+  <script src="js/data.js"></script>
+  <script src="js/images.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
