@@ -112,11 +112,12 @@ nav#navbar.scrolled {
   nav#navbar { padding: 0 1.25rem; }
 
   .nav-links {
-    display: none;
+    display: flex;
     position: fixed;
     top: 0;
-    right: -100%;
-    width: min(300px, 80vw);
+    right: 0;
+    transform: translateX(100%);
+    width: min(300px, 82vw);
     height: 100dvh;
     background: var(--white);
     padding: calc(var(--nav-h) + 2rem) 2rem 2rem;
@@ -124,10 +125,10 @@ nav#navbar.scrolled {
     gap: 1.75rem;
     z-index: 150;
     box-shadow: -4px 0 40px rgba(0,0,0,.08);
-    transition: right .35s cubic-bezier(.25,.46,.45,.94);
+    transition: transform .35s cubic-bezier(.25,.46,.45,.94);
     border-left: 1px solid var(--border);
   }
-  .nav-links.open { display: flex; right: 0; }
+  .nav-links.open { transform: translateX(0); }
   .nav-links a { font-size: .85rem; }
 
   .hamburger { display: flex; }

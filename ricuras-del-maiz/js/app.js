@@ -12,37 +12,21 @@ var GALLERY_IMAGES = [
   { src: 'img/WhatsApp Image 2026-05-12 at 11.33.24 AM.jpeg', label: 'Horneado cada manana' }
 ];
 
+var TEAM_IMAGES = [
+  'img/WhatsApp Image 2026-05-12 at 1.43.01 PM.jpeg',
+  'img/WhatsApp Image 2026-05-12 at 1.42.59 PM.jpeg',
+  'img/WhatsApp Image 2026-05-12 at 1.43.01 PM (1).jpeg'
+];
+
 function buildProducts() {
   var grid = document.getElementById('productsGrid');
   if (!grid) return;
 
   PRODUCTS.forEach(function(product) {
-    var card = document.createElement('div');
-    card.className = 'product-card reveal';
-
-    var tagHtml = product.tag
-      ? '<div class="card-tag">' + product.tag + '</div>'
-      : '';
-
-    var imgHtml = product.img
-      ? '<img src="' + product.img + '" alt="' + product.name + '" loading="lazy" />'
-      : '';
-
-    card.innerHTML =
-      '<div class="card-img-wrap">' +
-        imgHtml +
-        tagHtml +
-      '</div>' +
-      '<div class="card-body">' +
-        '<div class="card-name">' + product.name + '</div>' +
-        '<div class="card-desc">' + product.desc + '</div>' +
-        '<div class="card-footer">' +
-          '<span class="card-price">$' + product.price.toLocaleString('es-CO') + '</span>' +
-          '<button class="card-btn" onclick="addToCart(' + product.id + ')">Agregar</button>' +
-        '</div>' +
-      '</div>';
-
-    grid.appendChild(card);
+    var item = document.createElement('div');
+    item.className = 'pg-item reveal';
+    item.innerHTML = '<img src="' + product.img + '" alt="' + product.name + '" loading="lazy" />';
+    grid.appendChild(item);
   });
 }
 
@@ -60,6 +44,18 @@ function buildGallery() {
       '<span class="gallery-label">' + item.label + '</span>';
 
     grid.appendChild(el);
+  });
+}
+
+function buildTeam() {
+  var grid = document.getElementById('teamPhotos');
+  if (!grid) return;
+
+  TEAM_IMAGES.forEach(function(src) {
+    var item = document.createElement('div');
+    item.className = 'team-photo reveal';
+    item.innerHTML = '<img src="' + src + '" alt="Equipo Ricuras del Maiz" loading="lazy" />';
+    grid.appendChild(item);
   });
 }
 
@@ -94,6 +90,7 @@ function toggleMenu() {
 document.addEventListener('DOMContentLoaded', function() {
   buildProducts();
   buildGallery();
+  buildTeam();
   initRevealAnimations();
   initNavbarScroll();
 });

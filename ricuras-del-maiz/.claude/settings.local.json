@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(design-taste-frontend)",
+      "Skill(design-taste-frontend:*)"
+    ]
+  }
+}

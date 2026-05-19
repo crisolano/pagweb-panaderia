@@ -1,26 +1,148 @@
 /* ============================================================
-   about.css — Seccion quienes somos
+   about.css — Seccion quienes somos — Rediseño editorial
    Ricuras del Maiz
    ============================================================ */
 
 #about {
   padding: 8rem 4rem;
-  background: var(--bg);
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Numero decorativo de fondo */
+.about-bg-num {
+  position: absolute;
+  right: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 26vw;
+  font-weight: 700;
+  color: var(--surface-2);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  letter-spacing: -.06em;
+}
+
+/* Grid principal */
 .about-inner {
   max-width: 1160px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
+  grid-template-columns: 52fr 48fr;
+  gap: 7rem;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-/* Texto a la izquierda */
+/* ── Lado texto ── */
 .about-text { order: 1; }
 
-/* Imagen a la derecha */
+/* Fila etiqueta con linea horizontal */
+.about-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1.5px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.about-tag {
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.about-body {
+  font-size: .97rem;
+  line-height: 1.9;
+  color: var(--text-mid);
+  max-width: 50ch;
+  margin-top: 1.25rem;
+}
+
+/* Stats */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 3rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  padding-right: 1.75rem;
+}
+.stat:not(:last-child) {
+  border-right: 1px solid var(--border);
+  margin-right: 1.75rem;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -.025em;
+}
+
+.stat-label {
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: .5rem;
+}
+
+/* Caracteristicas destacadas */
+.about-features {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  margin-top: 2.25rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.about-feat {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  font-size: .83rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  letter-spacing: .01em;
+}
+
+.about-feat svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* ── Lado imagen ── */
 .about-img-wrap {
   position: relative;
   order: 2;
@@ -31,97 +153,101 @@
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: 4px;
+  position: relative;
 }
+
 .about-img-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .6s ease;
+  transition: transform .8s ease;
 }
-.about-img-frame:hover img { transform: scale(1.03); }
+.about-img-frame:hover img { transform: scale(1.04); }
 
-/* Acento decorativo */
+/* Bloque decorativo desplazado */
 .about-img-accent {
   position: absolute;
-  bottom: -1.5rem;
-  right: -1.5rem;
-  width: 100px;
-  height: 100px;
-  background: var(--surface);
-  border-radius: 4px;
+  bottom: -1.75rem;
+  right: -1.75rem;
+  width: 110px;
+  height: 110px;
+  background: var(--accent);
+  border-radius: 3px;
   z-index: -1;
+  opacity: .22;
 }
 
-/* Etiqueta lateral con acento */
-.about-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: .35rem 1rem;
-  background: var(--surface);
-  border-radius: 2px;
-  border-left: 2px solid var(--accent);
-  font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.25rem;
+/* Tarjeta flotante de estadistica */
+.about-img-stat {
+  position: absolute;
+  bottom: 2.25rem;
+  left: -2.75rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1.1rem 1.75rem;
+  box-shadow: 0 8px 32px rgba(28,23,18,.1);
+  z-index: 2;
 }
 
-.about-body {
-  font-size: 1rem;
-  line-height: 1.85;
-  color: var(--text-mid);
-  max-width: 50ch;
-  margin-top: 1.25rem;
-}
-
-/* Stats separados por lineas verticales */
-.about-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-  padding-right: 1.5rem;
-}
-.stat:not(:last-child) { border-right: 1px solid var(--border); margin-right: 1.5rem; }
-
-.stat-num {
+.about-img-stat-num {
   font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text);
   line-height: 1;
-  letter-spacing: -.025em;
+  letter-spacing: -.02em;
+  display: block;
 }
 
-.stat-label {
-  font-size: .62rem;
+.about-img-stat-lbl {
+  font-size: .57rem;
   font-weight: 600;
-  letter-spacing: .18em;
+  letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-top: .5rem;
+  display: block;
+  margin-top: .35rem;
 }
 
-@media (max-width: 900px) {
-  #about { padding: 5rem 1.25rem; }
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  #about { padding: 5rem 1.75rem; }
+
+  .about-bg-num {
+    font-size: 42vw;
+    top: 0;
+    transform: none;
+    opacity: .7;
+  }
 
   .about-inner {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
   }
 
   .about-text { order: 2; }
   .about-img-wrap { order: 1; }
 
   .about-img-frame { aspect-ratio: 16 / 9; }
+
   .about-img-accent { display: none; }
+
+  .about-img-stat {
+    left: 1rem;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  #about { padding: 4rem 1.25rem; }
+
+  .about-inner { gap: 2.5rem; }
+
+  .about-img-frame { aspect-ratio: 4 / 3; }
+
+  .about-img-stat { display: none; }
+
+  .stat-num { font-size: 2rem; }
 }
