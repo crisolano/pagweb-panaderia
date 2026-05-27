@@ -53,6 +53,7 @@
   border-radius: 4px;
   aspect-ratio: 3 / 4;
   background: var(--surface-2);
+  cursor: pointer;
 }
 
 .pg-item img {
@@ -65,6 +66,84 @@
   transition: transform .6s ease;
 }
 .pg-item:hover img { transform: scale(1.06); }
+
+/* Tag de producto (Estrella, Favorito, etc.) */
+.pg-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 3;
+  font-size: .55rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--accent);
+  padding: .3rem .75rem;
+  border-radius: 2px;
+}
+
+/* Overlay de nombre y precio */
+.pg-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 2rem 1.25rem 1.25rem;
+  background: linear-gradient(to top, rgba(28,23,18,.82) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: .5rem;
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.pg-item:hover .pg-footer {
+  opacity: 1;
+  transform: none;
+}
+
+.pg-info { display: flex; flex-direction: column; gap: .2rem; }
+
+.pg-name {
+  font-family: 'Playfair Display', serif;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.pg-price {
+  font-size: .7rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.75);
+  letter-spacing: .04em;
+}
+
+.pg-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: var(--white);
+  padding: .5rem 1rem;
+  border-radius: 2px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .2s ease, color .2s ease;
+}
+.pg-cta:hover {
+  background: var(--accent);
+  color: var(--white);
+}
 
 @media (max-width: 900px) {
   #products { padding: 5rem 1.25rem; }

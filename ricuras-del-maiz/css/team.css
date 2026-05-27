@@ -40,9 +40,11 @@
 }
 
 .team-photo {
+  position: relative;
   overflow: hidden;
   border-radius: 4px;
   background: rgba(255,255,255,.05);
+  cursor: default;
 }
 
 .team-photo img {
@@ -59,6 +61,35 @@
 }
 
 .team-photo:hover img { transform: scale(1.03); }
+
+/* Overlay de rol profesional */
+.team-role-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.5rem 1.25rem 1.25rem;
+  background: linear-gradient(to top, rgba(28,23,18,.8) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+
+.team-photo:hover .team-role-badge { opacity: 1; }
+
+.team-role-text {
+  font-family: 'Karla', sans-serif;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  border-left: 2px solid var(--accent);
+  padding-left: .65rem;
+  line-height: 1.4;
+}
 
 @media (max-width: 900px) {
   #team { padding: 5rem 1.25rem; }

@@ -25,12 +25,19 @@ html {
 }
 html::-webkit-scrollbar { display: none; }
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Karla', sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Margen de scroll para navegacion flotante */
+#about, #products, #team, #gallery, #contact {
+  scroll-margin-top: 84px;
 }
 
 .section-label {
@@ -63,7 +70,7 @@ body {
   padding: .9rem 2.2rem;
   background: var(--accent);
   color: var(--white);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-size: .75rem;
   font-weight: 600;
   letter-spacing: .15em;
@@ -89,7 +96,7 @@ body {
   padding: .9rem 2.2rem;
   background: transparent;
   color: var(--text);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-size: .75rem;
   font-weight: 600;
   letter-spacing: .15em;
@@ -118,12 +125,27 @@ body {
   0%, 100% { opacity: .65; transform: scaleY(1); }
   50%       { opacity: .2;  transform: scaleY(.6); }
 }
-@keyframes floatBadge {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-5px); }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+
+/* Focus visible para navegacion por teclado */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
 
 @media (max-width: 768px) {
   section { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
-  footer  { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
 }

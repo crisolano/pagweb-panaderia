@@ -9,7 +9,21 @@
       "Bash(npx --version)",
       "Bash(git remote *)",
       "Bash(node --version)",
-      "Bash(npm --version)"
+      "Bash(npm --version)",
+      "Bash(claude skill *)",
+      "PowerShell(claude skill *)",
+      "Bash(gh api *)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "PowerShell(npx uipro-cli init --ai claude 2>&1)",
+      "Bash(python skills/ui-ux-pro-max/scripts/search.py \"artisan bakery food ecommerce warm elegant traditional\" --design-system -p \"Ricuras del Maiz\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"artisan bakery food ecommerce warm elegant traditional\" --design-system -p \"Ricuras del Maiz\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"animation floating food hero scroll\" --domain ux)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"food bakery artisan service landing\" --domain landing)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"artisan bakery food service premium professional landing\" --design-system -p \"Ricuras del Maiz\" -f markdown)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"navbar floating premium professional\" --domain ux)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"elegant warm food restaurant\" --domain typography)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"premium section layout visual hierarchy\" --domain style)"
     ]
   }
 }

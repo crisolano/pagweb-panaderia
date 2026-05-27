@@ -12,10 +12,10 @@ var GALLERY_IMAGES = [
   { src: 'img/WhatsApp Image 2026-05-12 at 11.33.24 AM.jpeg', label: 'Horneado cada manana' }
 ];
 
-var TEAM_IMAGES = [
-  'img/WhatsApp Image 2026-05-12 at 1.43.01 PM.jpeg',
-  'img/WhatsApp Image 2026-05-12 at 1.42.59 PM.jpeg',
-  'img/WhatsApp Image 2026-05-12 at 1.43.01 PM (1).jpeg'
+var TEAM_MEMBERS = [
+  { src: 'img/WhatsApp Image 2026-05-12 at 1.43.01 PM.jpeg',     role: 'Panadero Artesanal' },
+  { src: 'img/WhatsApp Image 2026-05-12 at 1.42.59 PM.jpeg',     role: 'Maestra Panadera'   },
+  { src: 'img/WhatsApp Image 2026-05-12 at 1.43.01 PM (1).jpeg', role: 'Obrador Artesanal'  },
 ];
 
 function buildProducts() {
@@ -23,9 +23,24 @@ function buildProducts() {
   if (!grid) return;
 
   PRODUCTS.forEach(function(product) {
+    var price = '$' + product.price.toLocaleString('es-CO');
+    var waText = encodeURIComponent('Hola, quiero pedir ' + product.name + ' – ' + price);
+    var tagHtml = product.tag
+      ? '<span class="pg-tag">' + product.tag + '</span>'
+      : '';
+
     var item = document.createElement('div');
     item.className = 'pg-item reveal';
-    item.innerHTML = '<img src="' + product.img + '" alt="' + product.name + '" loading="lazy" />';
+    item.innerHTML =
+      '<img src="' + product.img + '" alt="' + product.name + '" loading="lazy" />' +
+      tagHtml +
+      '<div class="pg-footer">' +
+        '<div class="pg-info">' +
+          '<span class="pg-name">' + product.name + '</span>' +
+          '<span class="pg-price">' + price + '</span>' +
+        '</div>' +
+        '<a href="https://wa.me/573133447620?text=' + waText + '" class="pg-cta" target="_blank" rel="noopener">Pedir</a>' +
+      '</div>';
     grid.appendChild(item);
   });
 }
@@ -51,10 +66,14 @@ function buildTeam() {
   var grid = document.getElementById('teamPhotos');
   if (!grid) return;
 
-  TEAM_IMAGES.forEach(function(src) {
+  TEAM_MEMBERS.forEach(function(member) {
     var item = document.createElement('div');
     item.className = 'team-photo reveal';
-    item.innerHTML = '<img src="' + src + '" alt="Equipo Ricuras del Maiz" loading="lazy" />';
+    item.innerHTML =
+      '<img src="' + member.src + '" alt="Equipo Ricuras del Maiz" loading="lazy" />' +
+      '<div class="team-role-badge">' +
+        '<span class="team-role-text">' + member.role + '</span>' +
+      '</div>';
     grid.appendChild(item);
   });
 }
@@ -84,7 +103,19 @@ function initNavbarScroll() {
 }
 
 function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('open');
+  var nav     = document.getElementById('navLinks');
+  var btn     = document.querySelector('.hamburger');
+  var overlay = document.getElementById('navOverlay');
+  nav.classList.toggle('open');
+  btn.classList.toggle('active');
+  if (overlay) overlay.classList.toggle('active');
+}
+
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+  document.querySelector('.hamburger').classList.remove('active');
+  var overlay = document.getElementById('navOverlay');
+  if (overlay) overlay.classList.remove('active');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -93,4 +124,14 @@ document.addEventListener('DOMContentLoaded', function() {
   buildTeam();
   initRevealAnimations();
   initNavbarScroll();
+
+  /* Cerrar menu al tocar cualquier enlace de navegacion */
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  /* Cerrar menu con la tecla Escape */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMenu();
+  });
 });
